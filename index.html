@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=0.95, maximum-scale=0.95, user-scalable=0">
 	<title>Sondage</title>
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
 </head>
 <body>
 
@@ -42,9 +42,9 @@ function $post(url, data) {
 
 const btn = document.querySelector("button")
 btn.onclick = function() {
-	let nom = $("#nom").val()
-	let prenom = $("#prenom").val()
-	let answer = $("select").val()
+	let nom = document.querySelector("#nom").value
+	let prenom = document.querySelector("#prenom").value
+	let answer = document.querySelector("select").value
 
 	let data = {nom, prenom, answer}
 	let dataJSON = JSON.stringify(data)

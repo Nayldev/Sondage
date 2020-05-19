@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=0.95, maximum-scale=0.95, user-scalable=0">
+	<title>Sondage</title>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+
+<h1>Retour à Saliège ?</h1>
+
+<span>Nom :</span> <input id="nom">
+<span>Prénom :</span> <input id="prenom">
+
+<br><br>
+
+<span>Réponse :</span>
+<select>
+	<option value="true" selected>Oui, je reviens</option>
+	<option value="false">Nan, désolé</option>
+</select>
+
+<br><br>
+
+<button style="padding: 5px 20px 5px 20px;">Valider</button>
+
+<script type="text/javascript">
+
+const URL = decodeURIComponent(escape(atob("aHR0cHM6Ly9uYXlsLnBhbGV0b3UubWwvVGVzdHMvU29uZGFnZS9zdXJ2ZXkucGhw")))
+
+const btn = document.querySelector("button")
+btn.onclick = function() {
+	let nom = $("#nom").val()
+	let prenom = $("#prenom").val()
+	let answer = $("select").val()
+
+	let data = {nom, prenom, answer}
+	let dataJSON = JSON.stringify(data)
+
+	$.post(URL, {data:dataJSON}, function(res){
+		if (res=="true") {
+			document.body.innerHTML = `Réponse enregistrée : ${dataJSON}`
+		}
+	})
+}
+
+
+</script>
+</body>
+</html>
